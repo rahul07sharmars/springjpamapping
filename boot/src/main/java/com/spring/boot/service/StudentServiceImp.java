@@ -34,4 +34,10 @@ public class StudentServiceImp implements StudentService{
 		return studentRepository.save(student);
 	}
 
+	@Override
+	public List<Student> findStudentByFirstName(String firstName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

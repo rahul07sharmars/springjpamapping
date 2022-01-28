@@ -20,7 +20,10 @@ public class StudentController {
 	public List<Student> fetchStudent(){
 		return studentService.fetchStudent();	
 	}
-	
+	@GetMapping("/student/firstname/{firstname}")
+	public List<Student> findStudentByFirstName(@PathVariable("firstname") String firstName){
+		return studentService.findStudentByFirstName(firstName);
+	}
 	@PostMapping("/student/all")
 	public List<Student> saveAll(@RequestBody List<Student> studentList){
 		return studentService.saveAll(studentList);
