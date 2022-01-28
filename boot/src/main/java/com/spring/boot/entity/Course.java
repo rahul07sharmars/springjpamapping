@@ -14,6 +14,7 @@ public class Course {
 	private String title;
 	private Integer credit;
 	
+	
 	public Course(Long courseId, String title, Integer credit) {
 		super();
 		this.courseId = courseId;
