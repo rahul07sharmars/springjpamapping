@@ -31,37 +31,42 @@ public class CourseMaterial {
 			referencedColumnName = "courseId"
 			)
 	private Course course;
+
+	public Long getCourseMaterialId() {
+		return courseMaterialId;
+	}
+
+	public void setCourseMaterialId(Long courseMaterialId) {
+		this.courseMaterialId = courseMaterialId;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+
 	public CourseMaterial(Long courseMaterialId, String url, Course course) {
 		super();
 		this.courseMaterialId = courseMaterialId;
 		this.url = url;
 		this.course = course;
 	}
-	public Long getCourseMaterialId() {
-		return courseMaterialId;
-	}
-	public void setCourseMaterialId(Long courseMaterialId) {
-		this.courseMaterialId = courseMaterialId;
-	}
-	
+
 	public CourseMaterial() {
 		super();
 	}
-	public CourseMaterial(Long courseMaterialId, String url) {
-		super();
-		this.courseMaterialId = courseMaterialId;
-		this.url = url;
-	}
-	public String getUrl() {
-		return url;
-	}
-	@Override
-	public String toString() {
-		return "CourseMaterial [courseMaterialId=" + courseMaterialId + ", url=" + url + "]";
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
+	
 	
 	
 }
