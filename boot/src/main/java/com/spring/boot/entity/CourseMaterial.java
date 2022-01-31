@@ -10,12 +10,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class CourseMaterial {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@SequenceGenerator(
+            name = "course_material_sequence",
+            sequenceName = "course_material_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "course_material_sequence"
+    )
 	private Long courseMaterialId;
 	private String url;
 	
@@ -30,8 +42,10 @@ public class CourseMaterial {
 			//column acting as forign key
 			referencedColumnName = "courseId"
 			)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	
 	private Course course;
-
+	
 	public Long getCourseMaterialId() {
 		return courseMaterialId;
 	}
@@ -47,7 +61,7 @@ public class CourseMaterial {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
+	@JsonManagedReference
 	public Course getCourse() {
 		return course;
 	}
@@ -65,6 +79,11 @@ public class CourseMaterial {
 
 	public CourseMaterial() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "CourseMaterial [courseMaterialId=" + courseMaterialId + ", url=" + url + ", course=" + course + "]";
 	}
 	
 	
