@@ -21,35 +21,23 @@ import lombok.AllArgsConstructor;
 public class Teacher {
 
 	@Id
-	@SequenceGenerator(name = "teacher_sequence",
-			sequenceName = "teacher_sequence",
-			allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,
-	generator = "teacher_sequence")
+	@SequenceGenerator(name = "teacher_sequence", sequenceName = "teacher_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "teacher_sequence")
 	private Long teacherId;
 	private String firstName;
 	private String lastName;
-	
-	@OneToMany(
-			cascade = CascadeType.MERGE,
-			fetch = FetchType.LAZY
-	)
-	@JoinColumn( name = "teacher_id", referencedColumnName = "teacherId")
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-	private List<Course> course;
 
-	
-	
-	
-	
-	
-	
-	
-	
+//	@OneToMany(
+//			cascade = CascadeType.MERGE,
+//			fetch = FetchType.LAZY
+//	)
+//	@JoinColumn( name = "teacher_id", referencedColumnName = "teacherId")
+//	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//	private List<Course> course;
+
 	@Override
 	public String toString() {
-		return "Teacher [teacherId=" + teacherId + ", firstName=" + firstName + ", lastName=" + lastName + ", course="
-				+ course + "]";
+		return "Teacher [teacherId=" + teacherId + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 
 	public Teacher() {
@@ -57,13 +45,13 @@ public class Teacher {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Teacher(Long teacherId, String firstName, String lastName, List<Course> course) {
-		super();
-		this.teacherId = teacherId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.course = course;
-	}
+//	public Teacher(Long teacherId, String firstName, String lastName, List<Course> course) {
+//		super();
+//		this.teacherId = teacherId;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.course = course;
+//	}
 
 	public Long getTeacherId() {
 		return teacherId;
@@ -89,22 +77,19 @@ public class Teacher {
 		this.lastName = lastName;
 	}
 
-	public List<Course> getCourse() {
-		return course;
+	public Teacher(Long teacherId, String firstName, String lastName) {
+		super();
+		this.teacherId = teacherId;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
 
-	public void setCourse(List<Course> course) {
-		this.course = course;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+//	public List<Course> getCourse() {
+//		return course;
+//	}
+//
+//	public void setCourse(List<Course> course) {
+//		this.course = course;
+//	}
+
 }
