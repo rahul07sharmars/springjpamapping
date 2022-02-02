@@ -19,23 +19,18 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class CourseMaterial {
 
 	@Id
-	@SequenceGenerator(name = "course_material_sequence", sequenceName = "course_material_sequence", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_material_sequence")
+//	@SequenceGenerator(name = "course_material_sequence", sequenceName = "course_material_sequence", allocationSize = 1)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_material_sequence")
 	private Long courseMaterialId;
 	private String url;
-
-	@OneToOne(// we can define cascading here
-			cascade = CascadeType.MERGE,
-			// fetch is available there if selected as eager, it will fetch all course data
-			// when courseMaterial is fetched
-			// better if select as lazy
+	@OneToOne( cascade = CascadeType.ALL,
+			// we can define cascading here fetch is available there if selected as eager, it will fetch all course data
+			// when courseMaterial is fetched better if select as lazy
 			fetch = FetchType.LAZY)
-
 	@JoinColumn(name = "course_id",
 			// column acting as forign key
 			referencedColumnName = "courseId")
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-
+//	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private Course course;
 
 	public Long getCourseMaterialId() {

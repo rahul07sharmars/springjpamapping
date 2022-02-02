@@ -22,46 +22,46 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Course {
 
 	@Id
-	@SequenceGenerator(name = "course_sequence", sequenceName = "course_sequence", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_sequence")
+//	@SequenceGenerator(name = "course_sequence", sequenceName = "course_sequence", allocationSize = 1)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_sequence")
 	private Long courseId;
 	private String title;
 	private Integer credit;
-
 	@OneToOne(mappedBy = "course"
 //	            optional = false
 //	after it is comp. to have courseMaterial before adding course, 
 	)
 	private CourseMaterial courseMaterial;
-
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "teacher_id", referencedColumnName = "teacherId")
 	private Teacher teacher;
-
-	@ManyToMany(targetEntity = Student.class)
+	@ManyToMany(targetEntity = Student.class, cascade = CascadeType.ALL)
 	@JoinTable(name = "Student_Course_Mapping", joinColumns = @JoinColumn(name = "course_id", referencedColumnName = "courseId"), inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "studentId"))
 
 	private List<Student> students;
 
-	public void addStudent(Student student) {
-		if (student == null)
-			students = new ArrayList<>();
-		students.add(student);
-	}
+//	public void addStudent(Student student) {
+//		if (student == null)
+//			students = new ArrayList<>();
+//		students.add(student);
+//	}
 
-	public Course(Long courseId, String title, Integer credit, CourseMaterial courseMaterial, Teacher teacher) {
-		super();
-		this.courseId = courseId;
-		this.title = title;
-		this.credit = credit;
-		this.courseMaterial = courseMaterial;
-		this.teacher = teacher;
-	}
 
 	@JsonBackReference
 	public CourseMaterial getCourseMaterial() {
 		return courseMaterial;
 	}
+
+	public Course(Long courseId, String title, Integer credit, CourseMaterial courseMaterial, Teacher teacher,
+		List<Student> students) {
+	super();
+	this.courseId = courseId;
+	this.title = title;
+	this.credit = credit;
+	this.courseMaterial = courseMaterial;
+	this.teacher = teacher;
+	this.students = students;
+}
 
 	public void setCourseMaterial(CourseMaterial courseMaterial) {
 		this.courseMaterial = courseMaterial;
@@ -99,10 +99,22 @@ public class Course {
 		this.teacher = teacher;
 	}
 
+	
+
+	
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
 	@Override
 	public String toString() {
 		return "Course [courseId=" + courseId + ", title=" + title + ", credit=" + credit + ", courseMaterial="
-				+ courseMaterial + ", teacher=" + teacher + "]";
+				+ courseMaterial + ", teacher=" + teacher + ", students=" + students + "]";
 	}
 
 	public Course() {

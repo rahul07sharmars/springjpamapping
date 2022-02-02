@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
-import com.spring.boot.entity.Course;
+//import com.spring.boot.entity.Course;
 import com.spring.boot.entity.CourseMaterial;
 import com.spring.boot.service.CourseMaterialService;
 
