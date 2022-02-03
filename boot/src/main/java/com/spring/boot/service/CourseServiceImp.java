@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.boot.entity.Course;
+import com.spring.boot.entity.CourseMaterial;
 import com.spring.boot.repository.CourseRepository;
 @Service
 public class CourseServiceImp implements CourseService{
@@ -22,6 +23,14 @@ public class CourseServiceImp implements CourseService{
 	public Course saveCourse(Course course) {
 		// TODO Auto-generated method stub
 		return courseRepository.save(course);
+	}
+
+	@Override
+	public Course deleteCourse(Long courseId) {
+		// TODO Auto-generated method stub
+		Course course=courseRepository.findById(courseId).get();
+		courseRepository.deleteById(courseId);
+		return course;
 	}
 
 }

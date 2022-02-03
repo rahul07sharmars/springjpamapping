@@ -10,4 +10,6 @@ public interface CourseService {
 
 	public Course saveCourse(Course course);
 
+	public Course deleteCourse(Long courseId);
+
 }

@@ -1,7 +1,6 @@
 package com.spring.boot.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-
+import com.spring.boot.entity.CourseMaterial;
 import com.spring.boot.entity.Student;
 import com.spring.boot.service.StudentService;
 
@@ -10,8 +9,7 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-
+@RestController()
 public class StudentController {
 	
 	@Autowired
@@ -31,6 +29,10 @@ public class StudentController {
 	@PostMapping("/student")
 	public Student save(@RequestBody Student student) {
 		return studentService.saveStudent(student);
+	}
+	@DeleteMapping("/student/delete/{id}")
+	public Student deleteStudent(@PathVariable("id") Long studentId) {
+		return studentService.deleteStudent(studentId);
 	}
 	
 }

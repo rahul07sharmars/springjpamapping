@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.spring.boot.entity.Course;
 import com.spring.boot.service.CourseService;
 
-@RestController
+@RestController()
 public class CourseController {
 
 	@Autowired
@@ -20,5 +20,10 @@ public class CourseController {
 	@PostMapping("/course")
 	public Course saveCourse(@RequestBody Course course) {
 		return courseService.saveCourse(course);
+	}
+	@DeleteMapping("/course/delete/{id}")
+	public Course deleteCourse(@PathVariable("id") Long courseId) {
+		return courseService.deleteCourse(courseId);
+		
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.boot.entity.Course;
 import com.spring.boot.entity.Student;
 import com.spring.boot.repository.StudentRepository;
 @Service
@@ -38,6 +39,14 @@ public class StudentServiceImp implements StudentService{
 	public List<Student> findStudentByFirstName(String firstName) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Student deleteStudent(Long studentId) {
+		// TODO Auto-generated method stub
+		Student student=studentRepository.findById(studentId).get();
+		studentRepository.deleteById(studentId);
+		return student;
 	}
 
 }

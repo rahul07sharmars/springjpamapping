@@ -22,6 +22,15 @@ public class CourseMaterialServiceImp implements CourseMaterialService{
 		// TODO Auto-generated method stub
 		return courseMaterialRepository.save(courseMaterial);
 	}
+
+	@Override
+	public CourseMaterial deleteCourseMaterial(Long courseMaterialId) {
+		// TODO Auto-generated method stub
+		CourseMaterial courseMaterial=courseMaterialRepository.findById(courseMaterialId).get();
+		courseMaterialRepository.deleteById(courseMaterialId);
+		return courseMaterial;
+	}
+
 	
 	
 	

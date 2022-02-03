@@ -13,5 +13,9 @@ public interface CourseMaterialService {
 	public CourseMaterial saveCourseMaterial(CourseMaterial courseMaterial);
 
 	
+
+	public CourseMaterial deleteCourseMaterial(Long courseMaterialId);
+
+	
 	
 }

@@ -30,7 +30,8 @@ public class CourseMaterial {
 	@JoinColumn(name = "course_id",
 			// column acting as forign key
 			referencedColumnName = "courseId")
-//	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
+	
 	private Course course;
 
 	public Long getCourseMaterialId() {

@@ -10,4 +10,6 @@ public interface TeacherService {
 
 	public Teacher saveTeacher(Teacher teacher);
 
+	public Teacher deleteTeacher(Long teacherId);
+
 }
